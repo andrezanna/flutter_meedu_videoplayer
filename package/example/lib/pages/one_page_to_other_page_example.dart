@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu_videoplayer/meedu_player.dart';
-import 'package:wakelock/wakelock.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
 class OnePageExample extends StatefulWidget {
   const OnePageExample({Key? key}) : super(key: key);
@@ -26,9 +26,9 @@ class _OnePageExampleState extends State<OnePageExample> {
     _playerEventSubs = _meeduPlayerController!.onPlayerStatusChanged.listen(
       (PlayerStatus status) {
         if (status == PlayerStatus.playing) {
-          Wakelock.enable();
+          WakelockPlus.enable();
         } else {
-          Wakelock.disable();
+          WakelockPlus.disable();
         }
       },
     );
@@ -50,7 +50,7 @@ class _OnePageExampleState extends State<OnePageExample> {
       await _meeduPlayerController!.dispose();
       _meeduPlayerController = null;
       // The next line disables the wakelock again.
-      await Wakelock.disable();
+      await WakelockPlus.disable();
     }
   }
 
@@ -122,9 +122,9 @@ class _PageTwoState extends State<PageTwo> {
     _playerEventSubs = _meeduPlayerController.onPlayerStatusChanged.listen(
       (PlayerStatus status) {
         if (status == PlayerStatus.playing) {
-          Wakelock.enable();
+          WakelockPlus.enable();
         } else {
-          Wakelock.disable();
+          WakelockPlus.disable();
         }
       },
     );
@@ -138,7 +138,7 @@ class _PageTwoState extends State<PageTwo> {
   void dispose() {
     // The next line disables the wakelock again.
     _playerEventSubs?.cancel();
-    Wakelock.disable();
+    WakelockPlus.disable();
     _meeduPlayerController.dispose();
     super.dispose();
   }

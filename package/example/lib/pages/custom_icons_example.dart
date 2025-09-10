@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu_videoplayer/meedu_player.dart';
-import 'package:wakelock/wakelock.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
 class CustomIconsExamplePage extends StatefulWidget {
   const CustomIconsExamplePage({Key? key}) : super(key: key);
@@ -27,9 +27,9 @@ class _CustomIconsExamplePageState extends State<CustomIconsExamplePage> {
     _playerEventSubs = _meeduPlayerController.onPlayerStatusChanged.listen(
       (PlayerStatus status) {
         if (status == PlayerStatus.playing) {
-          Wakelock.enable();
+          WakelockPlus.enable();
         } else {
-          Wakelock.disable();
+          WakelockPlus.disable();
         }
       },
     );
@@ -43,7 +43,7 @@ class _CustomIconsExamplePageState extends State<CustomIconsExamplePage> {
   void dispose() {
     // The next line disables the wakelock again.
     _playerEventSubs?.cancel();
-    Wakelock.disable();
+    WakelockPlus.disable();
     _meeduPlayerController.dispose();
     super.dispose();
   }

@@ -1,6 +1,7 @@
 {
-    "dart.debugExternalPackageLibraries": true,
-    "cSpell.words": [
-        "Meedu"
-    ]
+  "dart.debugExternalPackageLibraries": true,
+  "cSpell.words": [
+    "Meedu"
+  ],
+  "dart.flutterSdkPath": ".fvm/versions/3.27.4"
 }

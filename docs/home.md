@@ -419,7 +419,7 @@ To play a video from a local **File**
 ```dart
 import 'package:flutter/material.dart';
 import 'package:meedu_player/meedu_player.dart';
-import 'package:wakelock/wakelock.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
 class BasicExamplePage extends StatefulWidget {
   BasicExamplePage({Key? key}) : super(key: key);
