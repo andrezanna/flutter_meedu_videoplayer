@@ -17,10 +17,6 @@ Future<void> initMeeduPlayer(
     VideoPlayerUsed.videoPlayer = true;
   }
 
-  initVideoPlayerMediaKitIfNeeded(
-      iosUseMediaKit: iosUseMediaKit,
-      androidUseMediaKit: androidUseMediaKit,
-      );
 }
 
 Future<void> initWindowManagerIfNeeded() async {

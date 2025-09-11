@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.7.10'
+    ext.kotlin_version = '2.0.0'
     repositories {
         google()
         mavenCentral()
@@ -38,15 +38,15 @@ subprojects {
                     }
                     compileOptions {
                         // Sets Java compatibility to Java 8
-                        sourceCompatibility JavaVersion.VERSION_21
-                        targetCompatibility JavaVersion.VERSION_21
+                        sourceCompatibility JavaVersion.VERSION_17
+                        targetCompatibility JavaVersion.VERSION_17
                     }
                     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
                         kotlinOptions {
-                            jvmTarget = "21"
+                            jvmTarget = "17"
                         }
                     }
-                    println("Setting java version to 21")
+                    println("Setting java version to 17")
                     println("Setting compileSdkVersion and targetSdkVersion to $androidApiVersion")
                 }
             }

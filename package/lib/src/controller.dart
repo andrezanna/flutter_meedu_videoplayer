@@ -376,7 +376,7 @@ class MeeduPlayerController {
 
     //check each
     if (!desktopOrWeb && enabledControls.volumeSwipes) {
-      VolumeController().listener((newVolume) {
+      VolumeController.instance.addListener((newVolume) {
         volume.value = newVolume;
       });
     }
@@ -766,7 +766,7 @@ class MeeduPlayerController {
       _currentVolume.value = _videoPlayerController?.value.volume ?? 0;
     } else {
       try {
-        _currentVolume.value = await VolumeController().getVolume();
+        _currentVolume.value = await VolumeController.instance.getVolume();
       } catch (e) {
         customDebugPrint("currentVolume $e");
         //throw 'Failed to get current brightness';
@@ -805,7 +805,7 @@ class MeeduPlayerController {
         volumeUpdated();
       } else {
         try {
-          VolumeController().setVolume(volumeNew, showSystemUI: false);
+          VolumeController.instance.setVolume(volumeNew,);
         } catch (_) {
           customDebugPrint(_);
         }
