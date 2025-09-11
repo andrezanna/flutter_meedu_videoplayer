@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_meedu_videoplayer/meedu_player.dart';
 import 'package:universal_platform/universal_platform.dart';
 import 'package:window_manager/window_manager.dart';
-import 'package:fullscreen_window/fullscreen_window.dart';
 
 class ScreenManager {
   /// [orientations] the device orientation after exit of the fullscreen
@@ -57,7 +56,11 @@ class ScreenManager {
   Future<void> setWebFullScreen(bool state, MeeduPlayerController _) async {
     _.fullscreen.value = state;
     try {
-      FullScreenWindow.setFullScreen(state);
+      if (state) { //OK for Android, fail for windows/web
+        SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+      } else {
+        SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
+      }
     } catch (e) {
       if (e.toString().contains("Document not active")) {
         _.customDebugPrint("Document not active ignored");
