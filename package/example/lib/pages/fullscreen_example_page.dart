@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meedu_videoplayer/meedu_player.dart';
 
 const videos = [
-  'https://movietrailers.apple.com/movies/paramount/the-spongebob-movie-sponge-on-the-run/the-spongebob-movie-sponge-on-the-run-big-game_h720p.mov',
+  'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
   'https://movietrailers.apple.com/movies/independent/bill-ted-face-the-music/bill-and-ted-face-the-music-trailer-1_h720p.mov',
   'https://movietrailers.apple.com/movies/roadsideattractions/words-on-bathroom-walls/words-on-bathroom-walls-trailer-1_h720p.mov',
   'https://movietrailers.apple.com/movies/independent/alone/alone-trailer-1_h720p.mov',

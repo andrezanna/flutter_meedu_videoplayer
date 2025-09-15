@@ -54,7 +54,7 @@ class _DisabledButtonsExampleState extends State<DisabledButtonsExample> {
       DataSource(
         type: DataSourceType.network,
         source:
-            "https://movietrailers.apple.com/movies/paramount/the-spongebob-movie-sponge-on-the-run/the-spongebob-movie-sponge-on-the-run-big-game_h720p.mov",
+            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
       ),
       autoplay: true,
     );

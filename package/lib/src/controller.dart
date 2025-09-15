@@ -495,8 +495,11 @@ class MeeduPlayerController {
         isBuffering.value =
             value.isPlaying && position.inSeconds >= (lastBufferedEnd);
       }
+
       //respect the native is buffering flag
-      isBuffering.value = isBuffering.value || value.isBuffering;
+      isBuffering.value = isBuffering.value ||
+          (value.isBuffering &&
+              value.buffered.last.end.inSeconds < value.position.inSeconds);
 
       // Calculate the buffered percentage relative to the total video duration
       // Update the buffered percentage value
@@ -741,11 +744,13 @@ class MeeduPlayerController {
   /// fast Forward (10 seconds)
   Future<void> fastForward() async {
     await videoSeekToNextSeconds(10, playerStatus.playing);
+    dataStatus.status.value = DataStatus.loaded;
   }
 
   /// rewind (10 seconds)
   Future<void> rewind() async {
     await videoSeekToNextSeconds(-10, playerStatus.playing);
+    dataStatus.status.value = DataStatus.loaded;
   }
 
   Future<void> getCurrentBrightness() async {
@@ -805,7 +810,9 @@ class MeeduPlayerController {
         volumeUpdated();
       } else {
         try {
-          VolumeController.instance.setVolume(volumeNew,);
+          VolumeController.instance.setVolume(
+            volumeNew,
+          );
         } catch (_) {
           customDebugPrint(_);
         }
